@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn
+        Type="Application">
+		<Name>CYLee Revit Addin bundle</Name>
+		<Assembly>CYLee.Revit\CYLee.Revit.Entry.dll</Assembly>
+		<AddInId>23D6930A-3597-410F-82B6-AC96719033CD</AddInId>
+		<FullClassName>CYLee.Revit.Entry.AddTab</FullClassName>
+		<VendorId>com.cylee</VendorId>
+		<VendorDescription>CYLee, www.cylee.com</VendorDescription>
+	</AddIn>
+</RevitAddIns>
