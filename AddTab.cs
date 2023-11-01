@@ -350,7 +350,7 @@ namespace CYLee.Revit.Entry
                 img32 = Util.GetImageSource(Resources.Code32);
 
                 // create button
-                pbd = new PushButtonData("cmdStartSetupCreateRamp", "建立坡道", Path.Combine(currentDirectory, assembly), "CYLee.Revit.RampTools.StartSetupCreateRamp")
+                pbd = new PushButtonData("cmdStartSetupCreateRampV2", "建立坡道", Path.Combine(currentDirectory, assembly), "CYLee.Revit.RampTools.StartSetupCreateRampV2")
                 {
                     ToolTip = "選定中心線後，依指定寬度建立坡道",
                     LongDescription = "",
