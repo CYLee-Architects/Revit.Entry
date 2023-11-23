@@ -63,9 +63,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap Code16 {
+        internal static System.Drawing.Bitmap AreaToExcel_32 {
             get {
-                object obj = ResourceManager.GetObject("Code16", resourceCulture);
+                object obj = ResourceManager.GetObject("AreaToExcel_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,19 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap Code32 {
+        internal static System.Drawing.Bitmap Code_16 {
             get {
-                object obj = ResourceManager.GetObject("Code32", resourceCulture);
+                object obj = ResourceManager.GetObject("Code_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Code_32 {
+            get {
+                object obj = ResourceManager.GetObject("Code_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +103,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap EscapePathDraw16 {
+        internal static System.Drawing.Bitmap EscapePathDraw_16 {
             get {
-                object obj = ResourceManager.GetObject("EscapePathDraw16", resourceCulture);
+                object obj = ResourceManager.GetObject("EscapePathDraw_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +113,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap EscapePathDraw32 {
+        internal static System.Drawing.Bitmap EscapePathDraw_32 {
             get {
-                object obj = ResourceManager.GetObject("EscapePathDraw32", resourceCulture);
+                object obj = ResourceManager.GetObject("EscapePathDraw_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +123,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap EscapePathReport16 {
+        internal static System.Drawing.Bitmap EscapePathReport_16 {
             get {
-                object obj = ResourceManager.GetObject("EscapePathReport16", resourceCulture);
+                object obj = ResourceManager.GetObject("EscapePathReport_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +133,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap EscapePathReport32 {
+        internal static System.Drawing.Bitmap EscapePathReport_32 {
             get {
-                object obj = ResourceManager.GetObject("EscapePathReport32", resourceCulture);
+                object obj = ResourceManager.GetObject("EscapePathReport_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +143,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap Info16 {
+        internal static System.Drawing.Bitmap Info_16 {
             get {
-                object obj = ResourceManager.GetObject("Info16", resourceCulture);
+                object obj = ResourceManager.GetObject("Info_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +153,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap Info32 {
+        internal static System.Drawing.Bitmap Info_32 {
             get {
-                object obj = ResourceManager.GetObject("Info32", resourceCulture);
+                object obj = ResourceManager.GetObject("Info_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +163,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap ProjectInfo16 {
+        internal static System.Drawing.Bitmap ProjectInfo_16 {
             get {
-                object obj = ResourceManager.GetObject("ProjectInfo16", resourceCulture);
+                object obj = ResourceManager.GetObject("ProjectInfo_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +173,9 @@ namespace CYLee.Revit.Entry {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap ProjectInfo32 {
+        internal static System.Drawing.Bitmap ProjectInfo_32 {
             get {
-                object obj = ResourceManager.GetObject("ProjectInfo32", resourceCulture);
+                object obj = ResourceManager.GetObject("ProjectInfo_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

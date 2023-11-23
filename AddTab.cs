@@ -64,8 +64,8 @@ namespace CYLee.Revit.Entry
 
                 #region 專案資訊
                 // get image
-                img16 = Util.GetImageSource(Resources.ProjectInfo16);
-                img32 = Util.GetImageSource(Resources.ProjectInfo32);
+                img16 = Util.GetImageSource(Resources.ProjectInfo_16);
+                img32 = Util.GetImageSource(Resources.ProjectInfo_32);
 
                 // create button
                 pbd = new PushButtonData("cmdStartSetupProjectInfo", "專案資訊", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ProjectInfo.StartSetupProjectInfo")
@@ -101,8 +101,8 @@ namespace CYLee.Revit.Entry
 
                 #region 面積表
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.AreaToExcel_32);
+                img32 = Util.GetImageSource(Resources.AreaToExcel_32);
 
                 // create button
                 pbd = new PushButtonData("cmdGenerateAreaSummarySheet", "面積表", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.GenerateAreaSummarySheet")
@@ -115,12 +115,24 @@ namespace CYLee.Revit.Entry
 
                 // add button to ribbon
                 pb = panel.AddItem(pbd) as PushButton;
+
+                // create button
+                pbd = new PushButtonData("cmdCurrentLevelArea", "當層面積表", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.CurrentLevelArea")
+                {
+                    ToolTip = "檢視當層面積表",
+                    LongDescription = "",
+                    Image = img16,
+                    LargeImage = img32,
+                };
+
+                // add button to ribbon
+                pb = panel.AddItem(pbd) as PushButton;
                 #endregion
 
                 #region 套用房間屬性
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd = new PushButtonData("cmdSetRoomProperties", "套用房間屬性", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.SetRoomProperties")
@@ -137,8 +149,8 @@ namespace CYLee.Revit.Entry
 
                 #region 複製房間屬性
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd1 = new PushButtonData("cmdRoomMatcher", "複製房間屬性", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.RoomMatcher")
@@ -152,8 +164,8 @@ namespace CYLee.Revit.Entry
 
                 #region 清除柱邊界
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd2 = new PushButtonData("cmdClearColumnRoomBounding", "清除柱邊界", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.ClearColumnRoomBounding")
@@ -167,8 +179,8 @@ namespace CYLee.Revit.Entry
 
                 #region 房間面積加總
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd3 = new PushButtonData("cmdSumRoomArea", "房間面積加總", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.SumRoomArea")
@@ -185,8 +197,8 @@ namespace CYLee.Revit.Entry
 
                 #region 清除房間
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd1 = new PushButtonData("cmdRoomCleaner", "清除房間", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.RoomCleaner")
@@ -224,8 +236,8 @@ namespace CYLee.Revit.Entry
 
                 #region 繪製步距線段
                 // get image
-                img16 = Util.GetImageSource(Resources.EscapePathDraw16);
-                img32 = Util.GetImageSource(Resources.EscapePathDraw32);
+                img16 = Util.GetImageSource(Resources.EscapePathDraw_16);
+                img32 = Util.GetImageSource(Resources.EscapePathDraw_32);
 
                 // create button
                 pbd1 = new PushButtonData("cmdDrawPath", "繪製步距線段", Path.Combine(currentDirectory, assembly), "CYLee.Revit.EscapePath.DrawPath")
@@ -239,8 +251,8 @@ namespace CYLee.Revit.Entry
 
                 #region 建立步距報告
                 // get image
-                img16 = Util.GetImageSource(Resources.EscapePathReport16);
-                img32 = Util.GetImageSource(Resources.EscapePathReport32);
+                img16 = Util.GetImageSource(Resources.EscapePathReport_16);
+                img32 = Util.GetImageSource(Resources.EscapePathReport_32);
 
                 // create button
                 pbd2 = new PushButtonData("cmdEscapePathReport", "建立步距報告", Path.Combine(currentDirectory, assembly), "CYLee.Revit.EscapePath.EscapePathReport")
@@ -276,8 +288,8 @@ namespace CYLee.Revit.Entry
 
                 #region 車位編號
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd = new PushButtonData("cmdParkingNumbering", "車位編號", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ParkingTools.ParkingNumbering")
@@ -294,8 +306,8 @@ namespace CYLee.Revit.Entry
 
                 #region 編號標籤
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd = new PushButtonData("cmdTagParking", "編號標籤", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ParkingTools.TagParking")
@@ -312,8 +324,8 @@ namespace CYLee.Revit.Entry
 
                 #region 還原翻轉
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd = new PushButtonData("cmdRevertMirroredParkingElements", "還原翻轉", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ParkingTools.RevertMirroredParkingElements")
@@ -346,8 +358,8 @@ namespace CYLee.Revit.Entry
 
                 #region 建立坡道
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd = new PushButtonData("cmdStartSetupCreateRampV2", "建立坡道", Path.Combine(currentDirectory, assembly), "CYLee.Revit.RampTools.StartSetupCreateRampV2")
@@ -380,8 +392,8 @@ namespace CYLee.Revit.Entry
 
                 #region 複製視圖裁切範圍
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd = new PushButtonData("cmdCopyCropRegion", "複製視圖" + Environment.NewLine + "裁切範圍", Path.Combine(currentDirectory, assembly), "CYLee.Revit.MiscTools.CopyCropRegion")
@@ -398,8 +410,8 @@ namespace CYLee.Revit.Entry
 
                 #region Schedule 轉出 Excel
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd = new PushButtonData("cmdExportScheduleToExcel", "Schedule" + Environment.NewLine + "轉出 Excel", Path.Combine(currentDirectory, assembly), "CYLee.Revit.MiscTools.ExportScheduleToExcel")
@@ -417,8 +429,8 @@ namespace CYLee.Revit.Entry
 
                 #region 線段長度加總
                 // get image
-                img16 = Util.GetImageSource(Resources.Code16);
-                img32 = Util.GetImageSource(Resources.Code32);
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
                 pbd = new PushButtonData("cmdSumLength", "線段長度加總", Path.Combine(currentDirectory, assembly), "CYLee.Revit.MiscTools.SumLength")
@@ -450,8 +462,8 @@ namespace CYLee.Revit.Entry
 
                 #region 關於
                 // get image
-                img16 = Util.GetImageSource(Resources.Info16);
-                img32 = Util.GetImageSource(Resources.Info32);
+                img16 = Util.GetImageSource(Resources.Info_16);
+                img32 = Util.GetImageSource(Resources.Info_32);
 
                 // create button
                 pbd = new PushButtonData("cmdAboutCYLee", "關於", Path.Combine(currentDirectory, assembly), "CYLee.Revit.Entry.StartAbout")
