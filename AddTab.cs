@@ -90,7 +90,6 @@ namespace CYLee.Revit.Entry
             {
                 panel = CreatePanel(tabName, panelName);
 
-                // init
                 PushButtonData pbd = null;
                 PushButtonData pbd1 = null;
                 PushButtonData pbd2 = null;
@@ -100,33 +99,50 @@ namespace CYLee.Revit.Entry
                 ImageSource img32 = null;
 
                 #region 面積表
-                // get image
+                #region 匯出全棟面積概算
                 img16 = Util.GetImageSource(Resources.AreaToExcel_32);
                 img32 = Util.GetImageSource(Resources.AreaToExcel_32);
 
-                // create button
-                pbd = new PushButtonData("cmdGenerateAreaSummarySheet", "面積表", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.GenerateAreaSummarySheet")
+                pbd = new PushButtonData("cmdGenerateAreaSummarySheet", "匯出全棟" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.GenerateAreaSummarySheet")
                 {
-                    ToolTip = "檢視面積表",
+                    ToolTip = "匯出全棟面積概算",
                     LongDescription = "",
                     Image = img16,
                     LargeImage = img32,
                 };
 
-                // add button to ribbon
                 pb = panel.AddItem(pbd) as PushButton;
+                #endregion
 
-                // create button
-                pbd = new PushButtonData("cmdCurrentLevelArea", "當層面積表", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.CurrentLevelArea")
+                #region 檢視全棟面積概算
+                img16 = Util.GetImageSource(Resources.AreaSummaryAll_32);
+                img32 = Util.GetImageSource(Resources.AreaSummaryAll_32);
+
+                pbd = new PushButtonData("cmdAreaSummary", "檢視全棟" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.AreaSummary")
                 {
-                    ToolTip = "檢視當層面積表",
+                    ToolTip = "檢視全棟面積概算",
                     LongDescription = "",
                     Image = img16,
                     LargeImage = img32,
                 };
 
-                // add button to ribbon
                 pb = panel.AddItem(pbd) as PushButton;
+                #endregion
+
+                #region 檢視當層面積概算
+                img16 = Util.GetImageSource(Resources.AreaSummaryLV_32);
+                img32 = Util.GetImageSource(Resources.AreaSummaryLV_32);
+
+                pbd = new PushButtonData("cmdAreaSummaryCurrentLevel", "檢視當層" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.AreaSummaryCurrentLevel")
+                {
+                    ToolTip = "檢視當層面積概算",
+                    LongDescription = "",
+                    Image = img16,
+                    LargeImage = img32,
+                };
+
+                pb = panel.AddItem(pbd) as PushButton;
+                #endregion
                 #endregion
 
                 #region 套用房間屬性
