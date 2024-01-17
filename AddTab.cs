@@ -1,13 +1,16 @@
-﻿using Autodesk.Revit.Attributes;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Autodesk.Revit.Attributes;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Events;
 
 namespace CYLee.Revit.Entry
 {
@@ -20,6 +23,7 @@ namespace CYLee.Revit.Entry
         private string assembly = "";
         private string currentAssembly = "";
         private string currentDirectory = "";
+        private List<PushButton> planPushButtons = new List<PushButton>();
         private RibbonPanel CreatePanel(string tab, string panel)
         {
             foreach (RibbonPanel rp in mApp.GetRibbonPanels(tab))
@@ -36,6 +40,36 @@ namespace CYLee.Revit.Entry
             mApp = application;
             RibbonPanel panel = null;
 
+            currentAssembly = Assembly.GetAssembly(GetType()).Location;
+            currentDirectory = Path.GetDirectoryName(currentAssembly);
+
+            int assemblyErrorCount = 0;
+            StringBuilder assemblyErrorMsg = new StringBuilder();
+            assemblyErrorMsg.AppendLine("CYLEE 輔助工具");
+
+            assembly = "CYLee.Revit.Core.dll";
+
+            if (!Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
+            {
+                assemblyErrorCount++;
+                assemblyErrorMsg.AppendLine(assembly);
+            }
+
+            assembly = "CYLee.Revit.Utilities.dll";
+
+            if (!Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
+            {
+                assemblyErrorCount++;
+                assemblyErrorMsg.AppendLine(assembly);
+            }
+
+            if (assemblyErrorCount > 0)
+            {
+                assemblyErrorMsg.AppendLine("檔案損毁，請重新安裝");
+                TaskDialog.Show("Error", assemblyErrorMsg.ToString());
+                return Result.Failed;
+            }
+
             try
             {
                 application.CreateRibbonTab(tabName);
@@ -45,14 +79,11 @@ namespace CYLee.Revit.Entry
                 TaskDialog.Show("Oops!!!", ex.Message);
             }
 
-            currentAssembly = Assembly.GetAssembly(GetType()).Location;
-            currentDirectory = Path.GetDirectoryName(currentAssembly);
-
             #region ProjectInfo
             assembly = "CYLee.Revit.ProjectInfo.dll";
             panelName = "專案資訊";
 
-            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+            if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
             {
                 panel = CreatePanel(tabName, panelName);
 
@@ -104,7 +135,7 @@ namespace CYLee.Revit.Entry
             assembly = "CYLee.Revit.AreaTools.dll";
             panelName = "面積工具";
 
-            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+            if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
             {
                 panel = CreatePanel(tabName, panelName);
 
@@ -159,6 +190,7 @@ namespace CYLee.Revit.Entry
                 };
 
                 pb = panel.AddItem(pbd) as PushButton;
+                planPushButtons.Add(pb);
                 #endregion
 
                 #region 套用房間屬性
@@ -255,7 +287,7 @@ namespace CYLee.Revit.Entry
             assembly = "CYLee.Revit.EscapePath.dll";
             panelName = "步行距離";
 
-            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+            if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
             {
                 panel = CreatePanel(tabName, panelName);
 
@@ -300,7 +332,9 @@ namespace CYLee.Revit.Entry
                 SplitButtonData sb1 = new SplitButtonData("splitButton1", "Split");
                 SplitButton sb = panel.AddItem(sb1) as SplitButton;
                 pb = sb.AddPushButton(pbd1);
-                sb.AddPushButton(pbd2);
+                planPushButtons.Add(pb);
+                pb = sb.AddPushButton(pbd2);
+                planPushButtons.Add(pb);
             }
             #endregion
 
@@ -308,7 +342,7 @@ namespace CYLee.Revit.Entry
             assembly = "CYLee.Revit.ParkingTools.dll";
             panelName = "停車工具";
 
-            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+            if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
             {
                 panel = CreatePanel(tabName, panelName);
 
@@ -334,6 +368,7 @@ namespace CYLee.Revit.Entry
 
                 // add button to ribbon
                 pb = panel.AddItem(pbd) as PushButton;
+                planPushButtons.Add(pb);
                 #endregion
 
                 #region 編號標籤
@@ -352,6 +387,7 @@ namespace CYLee.Revit.Entry
 
                 // add button to ribbon
                 pb = panel.AddItem(pbd) as PushButton;
+                planPushButtons.Add(pb);
                 #endregion
 
                 #region 還原翻轉
@@ -378,7 +414,7 @@ namespace CYLee.Revit.Entry
             assembly = "CYLee.Revit.RampTools.dll";
             panelName = "坡道工具";
 
-            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+            if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
             {
                 panel = CreatePanel(tabName, panelName);
 
@@ -412,7 +448,7 @@ namespace CYLee.Revit.Entry
             assembly = "CYLee.Revit.MiscTools.dll";
             panelName = "其它工具";
 
-            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+            if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
             {
                 panel = CreatePanel(tabName, panelName);
 
@@ -483,7 +519,7 @@ namespace CYLee.Revit.Entry
             assembly = "CYLee.Revit.Entry.dll";
             panelName = "說明";
 
-            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+            if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
             {
                 panel = CreatePanel(tabName, panelName);
                 // init
@@ -512,23 +548,59 @@ namespace CYLee.Revit.Entry
             }
             #endregion
 
+            application.ViewActivated += OnViewActivated;
             return Result.Succeeded;
         }
-
         public Result OnShutdown(UIControlledApplication application)
         {
+            application.ViewActivated -= OnViewActivated;
             return Result.Succeeded;
+        }
+        private void OnViewActivated(object sender, ViewActivatedEventArgs e)
+        {
+            // 取得當前視圖
+            View currentView = e.CurrentActiveView;
+
+            // 檢查視圖類型是否為平面視圖（例如：Floor Plan）
+            if (currentView.ViewType.Equals(ViewType.FloorPlan) || currentView.ViewType.Equals(ViewType.AreaPlan))
+            {
+                // 啟用或顯示你的Ribbon按鈕
+                EnableRibbonButton();
+            }
+            else
+            {
+                // 禁用或隱藏你的Ribbon按鈕
+                DisableRibbonButton();
+            }
+        }
+        private void EnableRibbonButton()
+        {
+            if (planPushButtons.Count > 0)
+            {
+                foreach (var button in planPushButtons)
+                {
+                    button.Enabled = true;
+                }
+            }
+        }
+        private void DisableRibbonButton()
+        {
+            if (planPushButtons.Count > 0)
+            {
+                foreach (var button in planPushButtons)
+                {
+                    button.Enabled = false;
+                }
+            }
         }
     }
     public class Util
     {
-
         public static ImageSource GetImageSource(Image img)
         {
             BitmapImage bmp = new BitmapImage();
             using (MemoryStream ms = new MemoryStream())
             {
-
                 img.Save(ms, ImageFormat.Png);
                 ms.Position = 0;
                 bmp.BeginInit();

@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PackageId>CYLee.Revit.Entry</PackageId>
-		<RootNamespace>CYLee.Revit.Entry</RootNamespace>
+        <RootNamespace>CYLee.Revit.Entry</RootNamespace>
         <AssemblyName>CYLee.Revit.Entry</AssemblyName>
         <Authors>CYLee</Authors>
         <Company>CYLee</Company>
         <PackageProjectUrl>https://www.cylee.com</PackageProjectUrl>
         <Product>CYLee Revit Tools</Product>
-        <Version>1.4.1</Version>
+        <Version>1.5.0</Version>
     </PropertyGroup>
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
@@ -68,6 +68,9 @@
         <OutputPath>..\bin\$(BuildType)$(RevitVersion)\</OutputPath>
     </PropertyGroup>
     <ItemGroup>
+        <ProjectReference Include="..\Revit.Core\Core.csproj" />
+    </ItemGroup>
+    <ItemGroup>
         <Reference Include="RevitAPI">
             <HintPath>C:\Program Files\Autodesk\Revit $(RevitVersion)\RevitAPI.dll</HintPath>
             <Private>False</Private>
@@ -78,16 +81,16 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-      <Compile Update="Resources.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Resources.resx</DependentUpon>
-      </Compile>
+        <Compile Update="Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
     <ItemGroup>
-      <EmbeddedResource Update="Resources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
+        <EmbeddedResource Update="Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
     </ItemGroup>
 </Project>
