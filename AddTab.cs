@@ -68,9 +68,27 @@ namespace CYLee.Revit.Entry
                 img32 = Util.GetImageSource(Resources.ProjectInfo_32);
 
                 // create button
-                pbd = new PushButtonData("cmdStartSetupProjectInfo", "專案資訊", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ProjectInfo.StartSetupProjectInfo")
+                pbd = new PushButtonData("cmdSetProjectInfoCmd", "專案資訊", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ProjectInfo.SetProjectInfoCmd")
                 {
                     ToolTip = "設定專案資訊",
+                    LongDescription = "",
+                    Image = img16,
+                    LargeImage = img32,
+                };
+
+                // add button to ribbon
+                pb = panel.AddItem(pbd) as PushButton;
+                #endregion
+
+                #region 專案資訊
+                // get image
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
+
+                // create button
+                pbd = new PushButtonData("cmdSetLevelCmd", "樓層設定", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ProjectInfo.SetLevelCmd")
+                {
+                    ToolTip = "設定專案樓層",
                     LongDescription = "",
                     Image = img16,
                     LargeImage = img32,
@@ -98,7 +116,6 @@ namespace CYLee.Revit.Entry
                 ImageSource img16 = null;
                 ImageSource img32 = null;
 
-                #region 面積表
                 #region 匯出全棟面積概算
                 img16 = Util.GetImageSource(Resources.AreaToExcel_32);
                 img32 = Util.GetImageSource(Resources.AreaToExcel_32);
@@ -142,7 +159,6 @@ namespace CYLee.Revit.Entry
                 };
 
                 pb = panel.AddItem(pbd) as PushButton;
-                #endregion
                 #endregion
 
                 #region 套用房間屬性
