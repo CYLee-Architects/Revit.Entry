@@ -42,6 +42,14 @@ namespace CYLee.Revit.Entry
             if (File.Exists(Path.Combine(currentDirectory, assembly)))
                 dictionary.Add("MiscTools", GetAssembleVersion(assembly));
 
+            assembly = "CYLee.Revit.EscapePath.dll";
+            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+                dictionary.Add("EscapePath", GetAssembleVersion(assembly));
+
+            assembly = "CYLee.Revit.Core.dll";
+            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+                dictionary.Add("Core", GetAssembleVersion(assembly));
+
             assembly = "CYLee.Revit.Utilities.dll";
             if (File.Exists(Path.Combine(currentDirectory, assembly)))
                 dictionary.Add("Utilities", GetAssembleVersion(assembly));
