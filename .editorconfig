@@ -5,14 +5,19 @@ root = true
 # All files
 [*]
 indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
 
 # XML project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
-indent_size = 2
+indent_size = 4
 
 # XML config files
 [*.{props,targets,ruleset,config,nuspec,resx,vsixmanifest,vsct}]
-indent_size = 2
+indent_size = 4
+
+[*.xaml]
+indent_size = 4
 
 # Code files
 [*.{cs,csx,vb,vbx}]
