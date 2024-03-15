@@ -1,44 +1,102 @@
-﻿<Window x:Class="CYLee.Revit.Entry.About"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CYLee.Revit.Entry"
-        mc:Ignorable="d"
-        Topmost="True"
-        ResizeMode="NoResize"
-        SizeToContent="WidthAndHeight"
-        Title="關於"
-        Height="240"
-        Width="360"
-        WindowStyle="ToolWindow">
+﻿<Window
+    x:Class="CYLee.Revit.Entry.About" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:CYLee.Revit.Entry"
+    mc:Ignorable="d"
+    Topmost="True"
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
+    Title="關於"
+    Height="300"
+    Width="360"
+    WindowStyle="ToolWindow">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
+            <ColumnDefinition
+                Width="100" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Image x:Name="vLogo"
-               Grid.Column="0"
-               VerticalAlignment="Top"
-               Width="64"
-               Height="64" Margin="18,12,18,18"/>
-        <StackPanel Orientation="Vertical"
-                    Grid.Column="1"
-                    Margin="5">
-            <Label FontSize="14"
-                   Content="CYLee Revit 輔助工具"/>
-            <Label x:Name="vVersion"
-                   Content="軟體版本："/>
-            <Label Content="模組清單："/>
-            <DataGrid x:Name="vModuleList"
-                      Height="80"
-                      Margin="5, 0,0,0"
-                      HeadersVisibility="None"/>
-            <Button Content="檢查更新"
-                    HorizontalAlignment="Center"
-                    IsEnabled="False"
-                    Width="80"
-                    Margin="10"/>
+        <Image
+            x:Name="vLogo"
+            Grid.Column="0"
+            VerticalAlignment="Top"
+            Width="64"
+            Height="64"
+            Margin="18,12,18,18" />
+        <StackPanel
+            Orientation="Vertical"
+            Grid.Column="1"
+            Margin="5">
+            <Label
+                FontSize="14"
+                Content="CYLee Revit 輔助工具" />
+            <Label
+                x:Name="vVersion"
+                Content="軟體版本：" />
+            <Label
+                Content="模組清單：" />
+            <DataGrid
+                x:Name="vModuleList"
+                Height="140"
+                Margin="5, 0, 0, 0"
+                AutoGenerateColumns="False"
+                CanUserReorderColumns="False"
+                ScrollViewer.CanContentScroll="True"
+                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Binding="{Binding Key}"
+                        Width="120"
+                        Header="模　　組">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter
+                                    Property="HorizontalContentAlignment"
+                                    Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style
+                                TargetType="TextBlock">
+                                <Setter
+                                    Property="VerticalAlignment"
+                                    Value="Center" />
+                                <Setter
+                                    Property="HorizontalAlignment"
+                                    Value="Right" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn
+                        Binding="{Binding Value}"
+                        Width="90"
+                        Header="版　　本">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter
+                                    Property="HorizontalContentAlignment"
+                                    Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style
+                                TargetType="TextBlock">
+                                <Setter
+                                    Property="VerticalAlignment"
+                                    Value="Center" />
+                                <Setter
+                                    Property="HorizontalAlignment"
+                                    Value="Right" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button
+                Content="檢查更新"
+                HorizontalAlignment="Center"
+                IsEnabled="False"
+                Width="80"
+                Margin="10" />
         </StackPanel>
     </Grid>
 </Window>
