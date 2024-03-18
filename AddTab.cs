@@ -193,8 +193,9 @@ namespace CYLee.Revit.Entry
                     LargeImage = img32,
                 };
 
+                pbd.AvailabilityClassName = "CYLee.Revit.AreaTools.AreaSummaryCurrentLevelCmd";
+
                 pb = panel.AddItem(pbd) as PushButton;
-                planPushButtons.Add(pb);
                 #endregion
 
                 #region 套用房間屬性
