@@ -150,7 +150,7 @@ namespace CYLee.Revit.Entry
                 img32 = Util.GetImageSource(Resources.AreaSummaryAll_32);
 
                 // create button
-                pbd1 = new PushButtonData("btnAreaSummaryCmd", "檢視全棟" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.AreaSummaryCmd")
+                pbd1 = new PushButtonData("btnAreaSummaryCmd", "檢視全棟" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.AreaSummaryAllCmd")
                 {
                     ToolTip = "檢視全棟面積概算",
                     LongDescription = "",
@@ -165,7 +165,7 @@ namespace CYLee.Revit.Entry
                 img32 = Util.GetImageSource(Resources.AreaToExcel_32);
 
                 // create button
-                pbd2 = new PushButtonData("btnExportAreaSummaryCmd", "匯出全棟" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.ExportAreaSummaryCmd")
+                pbd2 = new PushButtonData("btnExportAreaSummaryCmd", "匯出全棟" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.ExportAreaSummaryAllCmd")
                 {
                     ToolTip = "匯出全棟面積概算",
                     LongDescription = "",
@@ -193,8 +193,9 @@ namespace CYLee.Revit.Entry
                     LargeImage = img32,
                 };
 
+                pbd.AvailabilityClassName = "CYLee.Revit.AreaTools.AreaSummaryCurrentLevelCmd";
+
                 pb = panel.AddItem(pbd) as PushButton;
-                planPushButtons.Add(pb);
                 #endregion
 
                 #region 套用房間屬性
@@ -445,6 +446,58 @@ namespace CYLee.Revit.Entry
             }
             #endregion
 
+            #region ViewTools
+            assembly = "CYLee.Revit.ViewTools.dll";
+            panelName = "視圖工具";
+
+            if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
+            {
+                panel = CreatePanel(tabName, panelName);
+
+                // init
+                PushButtonData pbd = null;
+                PushButton pb = null;
+                ImageSource img16 = null;
+                ImageSource img32 = null;
+
+                #region 建立裁切範圍
+                // get image
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
+
+                // create button
+                pbd = new PushButtonData("btnSetupCropRegionCmd", "建立" + Environment.NewLine + "裁切範圍", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.SetupCropRegionCmd")
+                {
+                    ToolTip = "依指定的圖紙尺寸、方向自動建立裁切範圍",
+                    LongDescription = "",
+                    Image = img16,
+                    LargeImage = img32,
+                };
+
+                // add button to ribbon
+                pb = panel.AddItem(pbd) as PushButton;
+                #endregion
+
+                #region 複製視圖裁切範圍
+                // get image
+                img16 = Util.GetImageSource(Resources.Code_16);
+                img32 = Util.GetImageSource(Resources.Code_32);
+
+                // create button
+                pbd = new PushButtonData("btnCopyCropRegion", "複製視圖" + Environment.NewLine + "裁切範圍", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.CopyCropRegion")
+                {
+                    ToolTip = "將目前視圖裁切範圍套用至所有平面視圖",
+                    LongDescription = "",
+                    Image = img16,
+                    LargeImage = img32,
+                };
+
+                // add button to ribbon
+                pb = panel.AddItem(pbd) as PushButton;
+                #endregion
+            }
+            #endregion
+
             #region MiscTools
             assembly = "CYLee.Revit.MiscTools.dll";
             panelName = "其它工具";
@@ -458,24 +511,6 @@ namespace CYLee.Revit.Entry
                 PushButton pb = null;
                 ImageSource img16 = null;
                 ImageSource img32 = null;
-
-                #region 複製視圖裁切範圍
-                // get image
-                img16 = Util.GetImageSource(Resources.Code_16);
-                img32 = Util.GetImageSource(Resources.Code_32);
-
-                // create button
-                pbd = new PushButtonData("btnCopyCropRegion", "複製視圖" + Environment.NewLine + "裁切範圍", Path.Combine(currentDirectory, assembly), "CYLee.Revit.MiscTools.CopyCropRegion")
-                {
-                    ToolTip = "將目前視圖裁切範圍套用至所有平面視圖",
-                    LongDescription = "",
-                    Image = img16,
-                    LargeImage = img32,
-                };
-
-                // add button to ribbon
-                pb = panel.AddItem(pbd) as PushButton;
-                #endregion
 
                 #region Schedule 轉出 Excel
                 // get image
@@ -542,6 +577,8 @@ namespace CYLee.Revit.Entry
                     Image = img16,
                     LargeImage = img32,
                 };
+
+                pbd.AvailabilityClassName = "CYLee.Revit.Entry.StartAbout";
 
                 // add button to ribbon
                 pb = panel.AddItem(pbd) as PushButton;
