@@ -484,7 +484,7 @@ namespace CYLee.Revit.Entry
                 img32 = Util.GetImageSource(Resources.Code_32);
 
                 // create button
-                pbd = new PushButtonData("btnCopyCropRegion", "複製視圖" + Environment.NewLine + "裁切範圍", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.CopyCropRegion")
+                pbd = new PushButtonData("btnCopyCropRegion", "複製視圖" + Environment.NewLine + "裁切範圍", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.CopyCropRegionCmd")
                 {
                     ToolTip = "將目前視圖裁切範圍套用至所有平面視圖",
                     LongDescription = "",
