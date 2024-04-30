@@ -464,11 +464,9 @@ namespace CYLee.Revit.Entry
                     ImageSource img32 = null;
 
                     #region 建立裁切範圍
-                    // get image
                     img16 = Util.GetImageSource(Resources.Code_16);
                     img32 = Util.GetImageSource(Resources.Code_32);
 
-                    // create button
                     pbd = new PushButtonData("btnSetupCropRegionCmd", "建立" + Environment.NewLine + "裁切範圍", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.SetupCropRegionCmd")
                     {
                         ToolTip = "依指定的圖紙尺寸、方向自動建立裁切範圍",
@@ -483,11 +481,9 @@ namespace CYLee.Revit.Entry
                     #endregion
 
                     #region 複製視圖裁切範圍
-                    // get image
                     img16 = Util.GetImageSource(Resources.Code_16);
                     img32 = Util.GetImageSource(Resources.Code_32);
 
-                    // create button
                     pbd = new PushButtonData("btnCopyCropRegion", "複製視圖" + Environment.NewLine + "裁切範圍", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.CopyCropRegionCmd")
                     {
                         ToolTip = "將目前視圖裁切範圍套用至所有平面視圖",
@@ -507,6 +503,9 @@ namespace CYLee.Revit.Entry
                     PulldownButton group1 = panel.AddItem(group1Data) as PulldownButton;
 
                     #region 啟用上視圖
+                    img16 = Util.GetImageSource(Resources.Code_16);
+                    img32 = Util.GetImageSource(Resources.Code_32);
+
                     pbd = new PushButtonData("btnEnableLookUpCmd", "啟動", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.EnableLookUpCmd")
                     {
                         ToolTip = "啟動目前平面視圖的上視圖",
@@ -521,6 +520,9 @@ namespace CYLee.Revit.Entry
                     #endregion
 
                     #region 停用上視圖
+                    img16 = Util.GetImageSource(Resources.Code_16);
+                    img32 = Util.GetImageSource(Resources.Code_32);
+
                     pbd = new PushButtonData("btnDisableLookUpCmd", "停用", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.DisableLookUpCmd")
                     {
                         ToolTip = "停用上視圖",
@@ -532,6 +534,22 @@ namespace CYLee.Revit.Entry
                     pbd.AvailabilityClassName = "CYLee.Revit.ViewTools.DisableLookUpCmd";
 
                     pb = group1.AddPushButton(pbd) as PushButton;
+                    #endregion
+
+                    #region 縮放至選擇
+                    img16 = Util.GetImageSource(Resources.Code_16);
+                    img32 = Util.GetImageSource(Resources.Code_32);
+
+                    pbd = new PushButtonData("btnZoomToSelect", "縮放至選擇", Path.Combine(currentDirectory, assembly), "CYLee.Revit.ViewTools.ZoomToSelect")
+                    {
+                        ToolTip = "將畫面縮放至選取的物件",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pb = panel.AddItem(pbd) as PushButton;
+
                     #endregion
                 }
                 #endregion
