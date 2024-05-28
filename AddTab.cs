@@ -554,6 +554,61 @@ namespace CYLee.Revit.Entry
                 }
                 #endregion
 
+                #region AnnotationTools
+                assembly = "CYLee.Revit.AnnotationTools.dll";
+                panelName = "標註工具";
+
+                if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
+                {
+                    panel = CreatePanel(tabName, panelName);
+
+                    // init
+                    PushButtonData pbd = null;
+                    PushButton pb = null;
+                    ImageSource img16 = null;
+                    ImageSource img32 = null;
+
+                    #region 繪製樓層線標註
+                    // set image
+                    img16 = Util.GetImageSource(Resources.Code_16);
+                    img32 = Util.GetImageSource(Resources.Code_32);
+
+                    // create button
+                    pbd = new PushButtonData("btnMultiDimLevelCmd", "樓層線標註", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AnnotationTools.MultiDimLevelCmd")
+                    {
+                        ToolTip = "在立面視圖一次標註多個樓層線",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pbd.AvailabilityClassName = "CYLee.Revit.AnnotationTools.MultiDimLevelCmd";
+
+                    pb = panel.AddItem(pbd) as PushButton;
+                    #endregion
+
+                    #region 繪製網格線標註
+                    // set image
+                    img16 = Util.GetImageSource(Resources.Code_16);
+                    img32 = Util.GetImageSource(Resources.Code_32);
+
+                    // create button
+                    pbd = new PushButtonData("btnMultiDimGridCmd", "網格線標註", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AnnotationTools.MultiDimGridCmd")
+                    {
+                        ToolTip = "在平面視圖一次標註多個網格線",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pbd.AvailabilityClassName = "CYLee.Revit.AnnotationTools.MultiDimGridCmd";
+
+                    pb = panel.AddItem(pbd) as PushButton;
+
+                    #endregion
+                }
+                #endregion
+
                 #region MiscTools
                 assembly = "CYLee.Revit.MiscTools.dll";
                 panelName = "其它工具";
