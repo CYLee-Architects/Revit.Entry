@@ -53,6 +53,10 @@ namespace CYLee.Revit.Entry
             if (File.Exists(Path.Combine(currentDirectory, assembly)))
                 dictionary.Add("Utilities", GetAssembleVersion(assembly));
 
+            assembly = "CYLee.Revit.AnnotationTools.dll";
+            if (File.Exists(Path.Combine(currentDirectory, assembly)))
+                dictionary.Add("AnnotationTools", GetAssembleVersion(assembly));
+
             vModuleList.ItemsSource = dictionary;
         }
         private string GetAssembleVersion(string file)
