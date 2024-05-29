@@ -604,7 +604,23 @@ namespace CYLee.Revit.Entry
                     pbd.AvailabilityClassName = "CYLee.Revit.AnnotationTools.MultiDimGridCmd";
 
                     pb = panel.AddItem(pbd) as PushButton;
+                    #endregion
 
+                    #region 合併多段標註
+                    // set image
+                    img16 = Util.GetImageSource(Resources.Code_16);
+                    img32 = Util.GetImageSource(Resources.Code_32);
+
+                    // create button
+                    pbd = new PushButtonData("btnCombineDimCmd", "合併多段標註", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AnnotationTools.CombineDimCmd")
+                    {
+                        ToolTip = "將多段「平行」標註合併成單一標註",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pb = panel.AddItem(pbd) as PushButton;
                     #endregion
                 }
                 #endregion
