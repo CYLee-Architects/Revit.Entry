@@ -675,6 +675,24 @@ namespace CYLee.Revit.Entry
                     // add button to ribbon
                     pb = panel.AddItem(pbd) as PushButton;
                     #endregion
+
+                    #region 選定的柱自動接合牆
+                    // get image
+                    img16 = Util.GetImageSource(Resources.Code_16);
+                    img32 = Util.GetImageSource(Resources.Code_32);
+
+                    // create button
+                    pbd = new PushButtonData("btnAutoJoinColumnsCmd", "柱接合牆", Path.Combine(currentDirectory, assembly), "CYLee.Revit.MiscTools.AutoJoinColumnsCmd")
+                    {
+                        ToolTip = "選定的柱自動接合牆",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    // add button to ribbon
+                    pb = panel.AddItem(pbd) as PushButton;
+                    #endregion
                 }
                 #endregion
 
