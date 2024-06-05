@@ -622,6 +622,24 @@ namespace CYLee.Revit.Entry
 
                     pb = panel.AddItem(pbd) as PushButton;
                     #endregion
+
+                    #region 加門窗標籤
+                    // set image
+                    img16 = Util.GetImageSource(Resources.TagDoorWin_32);
+                    img32 = Util.GetImageSource(Resources.TagDoorWin_32);
+
+                    // create button
+                    pbd = new PushButtonData("btnTagDoorWinCmd", "加門窗標籤", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AnnotationTools.TagDoorWinCmd")
+                    {
+                        ToolTip = "依圖面比例加門窗標籤",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pbd.AvailabilityClassName = "CYLee.Revit.AnnotationTools.TagDoorWinCmd";
+                    pb = panel.AddItem(pbd) as PushButton;
+                    #endregion
                 }
                 #endregion
 

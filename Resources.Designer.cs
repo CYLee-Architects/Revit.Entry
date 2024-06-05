@@ -189,13 +189,27 @@ namespace CYLee.Revit.Entry {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap ProjectInfo_32 {
-            get {
+        internal static System.Drawing.Bitmap ProjectInfo_32
+        {
+            get
+            {
                 object obj = ResourceManager.GetObject("ProjectInfo_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap TagDoorWin_32
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("TagDoorWin_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
