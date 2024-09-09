@@ -289,6 +289,86 @@ namespace CYLee.Revit.Entry
                 }
                 #endregion
 
+                #region AreaTools - 高雄厝面積
+                assembly = "CYLee.Revit.AreaTools.dll";
+                panelName = "高雄厝面積";
+
+                if (Core.AssemblyValidator.Validate(Path.Combine(currentDirectory, assembly)))
+                {
+                    panel = CreatePanel(tabName, panelName);
+
+                    PushButtonData pbd = null;
+                    PushButton pb = null;
+                    ImageSource img16 = null;
+                    ImageSource img32 = null;
+
+                    #region 檢視當層面積概算
+                    img16 = Util.GetImageSource(Resources.AreaSummaryAll_32);
+                    img32 = Util.GetImageSource(Resources.AreaSummaryAll_32);
+
+                    pbd = new PushButtonData("btnKaoHsiungHouseAreaSummaryCmd", "檢視全棟" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.LandRule.KaoHsiung.KaoHsiungHouseAreaSummaryCmd")
+                    {
+                        ToolTip = "檢視全棟面積概算",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pbd.AvailabilityClassName = "CYLee.Revit.AreaTools.LandRule.KaoHsiung.KaoHsiungHouseAreaSummaryCmd";
+
+                    pb = panel.AddItem(pbd) as PushButton;
+                    #endregion
+
+                    #region 檢視當層面積概算
+                    img16 = Util.GetImageSource(Resources.AreaSummaryLV_32);
+                    img32 = Util.GetImageSource(Resources.AreaSummaryLV_32);
+
+                    pbd = new PushButtonData("btnKaoHsiungHouseAreaCurrentLevelCmd", "檢視當層" + Environment.NewLine + "面積概算", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.LandRule.KaoHsiung.KaoHsiungHouseAreaCurrentLevelCmd")
+                    {
+                        ToolTip = "檢視當層面積概算",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pbd.AvailabilityClassName = "CYLee.Revit.AreaTools.LandRule.KaoHsiung.KaoHsiungHouseAreaCurrentLevelCmd";
+
+                    pb = panel.AddItem(pbd) as PushButton;
+                    #endregion
+
+
+                    #region 通用設計面積設定
+                    img16 = Util.GetImageSource(Resources.Code_16);
+                    img32 = Util.GetImageSource(Resources.Code_32);
+
+                    pbd = new PushButtonData("btnKaoHsiungHouseAreaSettingCmd", "通用設計"+Environment.NewLine+"面積設定", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.LandRule.KaoHsiung.KaoHsiungHouseAreaSettingCmd")
+                    {
+                        ToolTip = "通用設計面積設定",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pb = panel.AddItem(pbd) as PushButton;
+                    #endregion
+
+                    #region 關於
+                    img16 = Util.GetImageSource(Resources.Info_16);
+                    img32 = Util.GetImageSource(Resources.Info_32);
+
+                    pbd = new PushButtonData("btnAboutKaoHsiungHouseCmd", "關於高雄厝", Path.Combine(currentDirectory, assembly), "CYLee.Revit.AreaTools.LandRule.KaoHsiung.AboutKaoHsiungHouseCmd")
+                    {
+                        ToolTip = "關於高雄厝",
+                        LongDescription = "",
+                        Image = img16,
+                        LargeImage = img32,
+                    };
+
+                    pb = panel.AddItem(pbd) as PushButton;
+                    #endregion
+                }
+                #endregion
+
                 #region EscapePath
                 assembly = "CYLee.Revit.EscapePath.dll";
                 panelName = "步行距離";
